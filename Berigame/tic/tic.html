@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tic-Tac-Toe Game</title>
+<style>
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-family: Arial, sans-serif;
+  background: #f0f0f0;
+  margin: 0;
+  padding: 20px;
+}
+
+h1 {
+  color: #333;
+}
+
+#game {
+  display: grid;
+  grid-template-columns: repeat(3, 100px);
+  grid-template-rows: repeat(3, 100px);
+  gap: 5px;
+  margin-top: 20px;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  background: #fff;
+  border: 2px solid #333;
+  font-size: 3rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  user-select: none;
+  transition: 0.2s;
+}
+
+.cell:hover {
+  background: #e0e0e0;
+}
+
+#info {
+  margin-top: 20px;
+  font-size: 1.2rem;
+}
+
+button {
+  margin-top: 15px;
+  padding: 10px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  border-radius: 5px;
+  background: #4caf50;
+  color: white;
+}
+</style>
+</head>
+<body>
+
+<h1>Tic-Tac-Toe</h1>
+<div id="game">
+  <div class="cell" data-index="0"></div>
+  <div class="cell" data-index="1"></div>
+  <div class="cell" data-index="2"></div>
+  <div class="cell" data-index="3"></div>
+  <div class="cell" data-index="4"></div>
+  <div class="cell" data-index="5"></div>
+  <div class="cell" data-index="6"></div>
+  <div class="cell" data-index="7"></div>
+  <div class="cell" data-index="8"></div>
+</div>
+<div id="info">Player X's turn</div>
+<button id="restartBtn">Restart Game</button>
+
+<script>
+const cells = document.querySelectorAll('.cell');
+const info = document.getElementById('info');
+const restartBtn = document.getElementById('restartBtn');
+
+let board = ['', '', '', '', '', '', '', '', ''];
+let currentPlayer = 'X';
+let gameActive = true;
+
+const winningConditions = [
+  [0,1,2], [3,4,5], [6,7,8], // rows
+  [0,3,6], [1,4,7], [2,5,8], // columns
+  [0,4,8], [2,4,6]           // diagonals
+];
+
+function handleCellClick(e) {
+  const index = e.target.dataset.index;
+  if (board[index] !== '' || !gameActive) return;
+
+  board[index] = currentPlayer;
+  e.target.textContent = currentPlayer;
+
+  checkResult();
+}
+
+function checkResult() {
+  let roundWon = false;
+  for (let condition of winningConditions) {
+    const [a, b, c] = condition;
+    if (board[a] && board[a] === board[b] && board[a] === board[c]) {
+      roundWon = true;
+      break;
+    }
+  }
+
+  if (roundWon) {
+    info.textContent = `Player ${currentPlayer} wins! 🎉`;
+    gameActive = false;
+    return;
+  }
+
+  if (!board.includes('')) {
+    info.textContent = "It's a tie! 🤝";
+    gameActive = false;
+    return;
+  }
+
+  currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+  info.textContent = `Player ${currentPlayer}'s turn`;
+}
+
+function restartGame() {
+  board = ['', '', '', '', '', '', '', '', ''];
+  gameActive = true;
+  currentPlayer = 'X';
+  info.textContent = "Player X's turn";
+  cells.forEach(cell => cell.textContent = '');
+}
+
+cells.forEach(cell => cell.addEventListener('click', handleCellClick));
+restartBtn.addEventListener('click', restartGame);
+</script>
+
+</body>
+</html>

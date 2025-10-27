@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bereda Wako // Digital Architect</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-dark-bg: #0a0a1a;
+  --color-mid-bg: #1a1a2e;
+  --color-accent-green: #00ffc8;
+  --color-accent-blue: #00bfff;
+  --color-text-light: #e0f2f7;
+  --color-text-dim: #8b9cad;
+  --glow-green: rgba(0, 255, 200, 0.7);
+  --glow-blue: rgba(0, 191, 255, 0.7);
+}
+
+/* --- Reset & Global --- */
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Share Tech Mono', monospace, sans-serif;
+  background: var(--color-dark-bg);
+  color: var(--color-text-light);
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  content: '';
+  position: fixed;
+  top: 0; left: 0; right: 0; bottom: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    transparent 0, transparent 1px,
+    rgba(0, 255, 200, 0.03) 2px,
+    rgba(0, 255, 200, 0.05) 3px
+  );
+  z-index: -1;
+}
+
+/* --- Header --- */
+.main-header {
+  padding: 15px 40px;
+  background: rgba(26,26,46,0.8);
+  backdrop-filter: blur(5px);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--color-accent-blue);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.5em;
+  color: var(--color-accent-green);
+  text-shadow: 0 0 8px var(--glow-green);
+  letter-spacing: 2px;
+}
+.nav-links a {
+  color: var(--color-text-dim);
+  text-decoration: none;
+  margin-left: 20px;
+  transition: color 0.2s, text-shadow 0.2s;
+}
+.nav-links a:hover {
+  color: var(--color-accent-green);
+  text-shadow: 0 0 5px var(--glow-green);
+}
+
+/* --- Hero --- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 100px 20px 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  width: 80%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--color-accent-blue), transparent);
+  box-shadow: 0 0 10px var(--glow-blue);
+}
+.hero h1 {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 4em;
+  color: var(--color-text-light);
+  text-shadow: 0 0 15px var(--glow-green);
+  margin-bottom: 5px;
+}
+.hero p.subtitle {
+  font-size: 1.5em;
+  color: var(--color-accent-green);
+  margin-bottom: 25px;
+}
+.hero p.mission {
+  font-size: 1.1em;
+  color: var(--color-text-dim);
+  margin-bottom: 30px;
+  max-width: 600px;
+}
+.hero button {
+  padding: 15px 40px;
+  font-size: 1.2em;
+  border: 3px solid var(--color-accent-green);
+  border-radius: 5px;
+  background: transparent;
+  color: var(--color-accent-green);
+  cursor: pointer;
+  font-weight: bold;
+  text-transform: uppercase;
+  box-shadow: 0 0 20px var(--glow-green);
+  transition: 0.3s;
+  letter-spacing: 2px;
+}
+.hero button:hover {
+  background: var(--color-accent-green);
+  color: var(--color-dark-bg);
+  transform: scale(1.05);
+  box-shadow: 0 0 30px var(--glow-green);
+}
+
+/* --- Game Grid --- */
+.game-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 30px;
+  padding: 40px;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+.game-card {
+  background: var(--color-mid-bg);
+  border-radius: 15px;
+  text-align: center;
+  padding: 15px;
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+  cursor: pointer;
+  border: 1px solid var(--color-accent-blue);
+  box-shadow: 0 0 10px var(--glow-blue) inset, 0 8px 20px rgba(0,0,0,0.6);
+  position: relative;
+  overflow: hidden;
+}
+.game-card:hover { transform: translateY(-8px) scale(1.03); border-color: var(--color-accent-green); }
+.game-card img { width: 100%; max-height: 150px; border-radius: 10px; margin-bottom: 15px; border: 1px solid var(--color-text-dim); }
+.game-card h2 { margin-bottom: 12px; font-size: 1.3em; color: var(--color-text-light); text-shadow: 0 0 8px rgba(255,255,255,0.2); }
+
+/* --- Game Card Button --- */
+.game-card .game-button {
+  display: inline-block;
+  padding: 10px 20px;
+  border-radius: 8px;
+  background: var(--color-accent-green);
+  color: var(--color-dark-bg);
+  font-size: 1.1em;
+  font-weight: bold;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  box-shadow: 0 0 15px var(--glow-green);
+  text-decoration: none;
+  transition: 0.3s;
+}
+.game-card .game-button:hover {
+  background: #00e6b8;
+  transform: translateY(-2px);
+  box-shadow: 0 0 25px var(--glow-green), 0 5px 15px rgba(0,0,0,0.8);
+}
+
+/* --- Footer --- */
+footer { 
+  text-align: center; 
+  padding: 30px 20px; 
+  background: #0a0a1a; 
+  color: var(--color-text-dim); 
+  font-size: 0.9em; 
+  border-top: 1px solid var(--color-accent-blue);
+  box-shadow: 0 -4px 10px rgba(0,0,0,0.5);
+}
+footer p { margin-bottom: 8px; }
+footer a { color: var(--color-accent-green); text-decoration: none; text-shadow: 0 0 5px var(--glow-green); transition: 0.2s; }
+footer a:hover { color: #00e6b8; text-decoration: underline; }
+
+/* --- Responsive --- */
+@media(max-width:768px){ 
+  .hero h1{ font-size:3em; } 
+  .hero p.subtitle{ font-size:1.2em; }
+  .game-grid{ padding:20px; gap:20px; } 
+  .main-header{ padding:15px 20px; }
+}
+@media(max-width:480px){ 
+  .main-header{ flex-direction:column; align-items:flex-start; }
+  .nav-links{ margin-top:10px; }
+  .hero h1{ font-size:2.5em; } 
+  .hero p.subtitle{ font-size:1em; }
+  .game-grid{ grid-template-columns:1fr; padding:15px; } 
+}
+</style>
+</head>
+<body>
+
+<header class="main-header">
+  <div class="logo">Bereda Wako // System</div>
+  <nav class="nav-links">
+    <a href="javascript:void(0)" onclick="document.querySelector('.hero').scrollIntoView({behavior:'smooth'})">Home</a>
+    <a href="javascript:void(0)" onclick="document.querySelector('.game-grid').scrollIntoView({behavior:'smooth'})">Games</a>
+    <a href="javascript:void(0)">Contact</a>
+  </nav>
+</header>
+
+<section class="hero">
+  <h1>BEREDA WAKO</h1>
+  <p class="subtitle">// DIGITAL ARCHITECT // GAME DEV PROTOCOL //</p>
+  <p class="mission">Designing immersive digital experiences and interactive games that captivate players worldwide. Ready to engage the next level of technology and creativity.</p>
+  <button onclick="document.querySelector('.game-grid').scrollIntoView({behavior:'smooth'})">ACCESS GAME NEXUS</button>
+</section>
+
+<section class="game-grid">
+  <div class="game-card">
+    <img src="images/b.jpg" alt="Bubble Bloom Thumbnail">
+    <h2>Bubble Bloom // Bloom Protocol</h2>
+    <a href="bubble/index.html" class="game-button">Engage</a>
+  </div>
+  <div class="game-card">
+    <img src="images/M.jpg" alt="Math Rush Thumbnail">
+    <h2>Math Rush // Data Stream</h2>
+    <a href="math/index.html" class="game-button">Engage</a>
+  </div>
+  <div class="game-card">
+    <img src="images/l.jpg" alt="Logic War Thumbnail">
+    <h2>Logic Wars // Decrypt Core</h2>
+    <a href="logic/index.html" class="game-button">Engage</a>
+  </div>
+  <div class="game-card">
+    <img src="images/t.jpg" alt="Tic-Tac-Glow Thumbnail">
+    <h2>Tic-Tac-Glow // Grid Match</h2>
+    <a href="tic/tic.html" class="game-button">Engage</a>
+  </div>
+</section>
+
+<footer>
+  <p>&copy; 2025 Bereda Wako // All Rights Reserved. System Integrity: High.</p>
+  <p>Contact:beriwako56@56gmail.com | Project Repository: <a href="https://bereda-maker.github.io/bereda-wako-portfolio/portfolio/">ACCESS PORTFOLIO</a></p>
+</footer>
+
+</body>
+</html>

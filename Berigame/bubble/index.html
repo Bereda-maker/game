@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Bubble Bloom 🌸</title>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+<div class="container">
+  <div class="game">
+    <canvas id="c"></canvas>
+    <div class="overlay" id="gameOver">
+      <h2>Game Over 🌸</h2>
+      <p>Your garden reached its limit!</p>
+      <button id="playAgain">Re-Seed the Garden</button>
+    </div>
+  </div>
+  <div class="sidebar">
+    <h1>Bubble Bloom 🌸</h1>
+    <div class="stat">Score: <span id="score">0</span></div>
+    <div class="stat">Level: <span id="level">1</span></div>
+    <div class="stat">Next Seed: <canvas id="next" width="52" height="52"></canvas></div>
+    <div class="controls"><button id="restart">Restart</button></div>
+    <p class="small">Aim, shoot, and match bubbles of the same color to make them bloom into points! 🌼</p>
+    <div class="footer">Bubble Bloom • HTML/CSS/JS Edition</div>
+  </div>
+</div>
+
+<script  src="game.js">
+
+</script>
+</body>
+</html>

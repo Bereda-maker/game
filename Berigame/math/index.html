@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Maths Rush // Neon Protocol</title>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+
+
+</head>
+<body>
+<h1>MATHS RUSH // PROTOCOL</h1>
+<div id="game" aria-live="polite">
+  <div id="scoreContainer">
+    <div id="score">SCORE: 0</div>
+    <div id="highScoreDisplay">HIGH: 0</div>
+  </div>
+
+  <div id="timerCircle" aria-hidden="true">
+    <svg width="100" height="100" viewBox="0 0 100 100" role="img" aria-label="Timer">
+      <circle id="bgCircle" cx="50" cy="50" r="45"></circle>
+      <circle id="progressCircle" cx="50" cy="50" r="45"
+              stroke-dasharray="282.74" stroke-dashoffset="0"></circle>
+    </svg>
+    <div id="centerText">10</div>
+  </div>
+
+  <div id="question">Awaiting Query...</div>
+  <input type="number" id="answer" placeholder="INPUT" disabled aria-label="Answer input">
+  <div style="display:flex;gap:8px">
+    <button id="submit" disabled>Execute</button>
+    <button id="start">Start Protocol</button>
+  </div>
+  <div id="hint">Press START to initiate the system sequence.</div>
+</div>
+
+<script src="script.js">
+
+</script>
+</body>
+</html>
